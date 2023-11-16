@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        minLength:3
+        minLength: 3
     },
     email: {
         type: String,
@@ -17,6 +17,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         minLength: 8
     }
-}, { timestamps })
+}, { timestamps: true });
 
-export default mongoose.model('user',userSchema);
+export default mongoose.model('User', userSchema);
