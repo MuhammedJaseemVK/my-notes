@@ -2,6 +2,7 @@ import express from 'express';
 import connectDB from './config/db.js';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authroutes.js'
+import colors from 'colors'
 
 dotenv.config();
 
@@ -19,5 +20,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`)
+    console.log(`Server running on http://localhost:${PORT}`.bgBlue.white)
 })
