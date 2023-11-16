@@ -13,6 +13,12 @@ export const signupController = async (req, res) => {
                 message: 'All fields are required'
             })
         }
+        if (name.length < 3 || password.length < 8 || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+            return res.status(400).send({
+                success: false,
+                message: 'Some fields are invalid'
+            })
+        }
         // check if email already signed up
         const existingUser = await userModel.findOne({ email })
         if (existingUser) {
@@ -53,6 +59,12 @@ export const loginController = async (req, res) => {
             return res.status(400).send({
                 success: false,
                 message: 'All fields are required'
+            })
+        }
+        if (password.length < 8 || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+            return res.status(400).send({
+                success: false,
+                message: 'Some fields are invalid'
             })
         }
         // check if mail is regstered
